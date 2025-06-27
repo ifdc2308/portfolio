@@ -1,12 +1,15 @@
 {
   "name": "my-static-next-app",
   "version": "1.0.0",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build && next export",
-    "start": "npx serve out",
-    "deploy": "gh-pages -d out"
-  },
+  // "scripts": {
+  //   "dev": "next dev",
+  //   "build": "next build && next export",
+  //   "start": "npx serve out"
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start"
+    },
   "dependencies": {
     "@chakra-ui/icons": "^2.2.4",
     "@chakra-ui/react": "^2.8.0",
