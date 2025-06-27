@@ -1,0 +1,41 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial', system-ui;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* //importacao local das fontes petrov sans */
+@font-face {
+  font-family: 'Petrov Sans';
+  src: url('/fonts/PetrovSans-Trial-Light-BF653889ec42bf5.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Petrov Sans';
+  src: url('/fonts/PetrovSans-Trial-Regular-BF653889ec49cc0.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Petrov Sans';
+  src: url('/fonts/PetrovSans-Trial-SemiBold-BF653889ec468bb.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Petrov Sans';
+  src: url('/fonts/PetrovSans-Trial-Bold-BF653889ec4be3e.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
