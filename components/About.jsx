@@ -10,30 +10,49 @@ import {
   Tag,
   Container,
   Flex,
+  useDisclosure,
 } from '@chakra-ui/react'
+import { useState } from 'react'
+import { DetailsModal } from './DetailsModal'
 
 const projects = [
   {
-    title: "www.gestaotributaria.br",
+    title: "gestaotributaria.com.br",
     description: "Research software, EFD-Reinf module, and complementary tools in the tax area. I work as a front-end developer implementing new functionalities, UI/UX improvements, and more.",
     image: "assets/gt.png",
-    tags: ["Next.js", "Javascript"],
-    author: "Ítalo Dórea",
+    tags: ["React.js", "Javascript"]
   },
   {
-    title: "www.redacaoexito1000.com.br",
+    title: "redacaoexito1000.com.br",
     description: "Exito 1000 writing platform, responsible for the development and maintenance of pages, as well as UI/UX improvements",
     image: "assets/exito1000.png",
-    tags: ["Next.js", "Javascript"],
-    author: "Ítalo Dórea",
+    tags: ["Next.js", "Javascript"]
+  },
+   {
+    title: "gtap.com.br",
+    description: "website for a nationwide event, with contact form and gallery and information pages",
+    image: "assets/gtap.png",
+    tags: ["React.js", "Javascript"]
+  },
+    {
+    title: "sefazfacilbrasil.com.br",
+    description: "platform with features aimed at Brazilian micro-entrepreneurs, with cash flow and publications, forum and payment method",
+    image: "assets/sefazfacilbrasil.png",
+    tags: ["Javascript", "React.js"]
+  },
+   {
+    title: "a4locadora.com.br",
+    description: "Sales landing page for A4 Locadora de Motos, including design, conversion-focused landing page, and motorcycle reservation system.",
+    image: "assets/a4locadora.png",
+    tags: ["Wordpress", "PHP"]
   },
   {
     title: "CNPJ Search",
     description: "A tool for querying data about Brazilian companies using their CNPJ. All the information you need about a company in one place.",
     image: "assets/cnpjSearch.png",
-    tags: ["TypeScript"],
-    author: "Ítalo Dórea",
+    tags: ["TypeScript"]
   },
+   
 ]
 
 const TagsProject = ({ tags, marginTop = 0 }) => (
@@ -47,6 +66,14 @@ const TagsProject = ({ tags, marginTop = 0 }) => (
 )
 
 export const About = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [selectedProject, setSelectedProject] = useState(null)
+
+  const handleCardClick = (project) => {
+    setSelectedProject(project)
+    onOpen()
+  };
+
   return (
     <Container maxW='full' paddingInline='10%' paddingBlock={5}>
       <Heading size='lg' marginTop="10">
@@ -70,6 +97,7 @@ export const About = () => {
             _hover={{
               transform: 'scale(1.03)'
             }}
+            onClick={() => handleCardClick(project)}
           >
             <Image
               borderRadius="lg"
@@ -90,6 +118,24 @@ export const About = () => {
           </Flex>
         ))}
       </Flex>
+      {/* modal from information project details */}
+      {selectedProject && (
+        <DetailsModal
+          isOpen={isOpen}
+          onClose={onClose}
+          title={selectedProject?.title}
+        >
+          <Image
+            src={selectedProject.image}
+            alt={selectedProject.title}
+            width="100%"
+            borderRadius="md"
+            mb={4}
+          />
+          <TagsProject tags={selectedProject.tags} />
+          <Text mt={4}>{selectedProject.description}</Text>
+        </DetailsModal>
+      )}
     </Container>
   )
 }
